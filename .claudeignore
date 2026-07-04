@@ -1,0 +1,13 @@
+# Credentials & secrets
+.env
+.env.*
+*.key
+*.pem
+*.p12
+*.pfx
+id_*
+*_host_key
+.ssh/
+
+# macOS metadata
+.DS_Store

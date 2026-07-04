@@ -1,0 +1,29 @@
+# macOS
+.DS_Store
+._*
+.AppleDouble
+.LSOverride
+Icon?
+
+# Editor
+*~
+*.swp
+*.swo
+*.tmp
+
+# Secrets (defense in depth — none belong in this repo)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+
+# Node / tooling (in case added later)
+node_modules/
+
+# Local scratch
+tmp/

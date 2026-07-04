@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>App Icons Generator — iOS / macOS / watchOS icons in your browser</title>
+  <meta name="description" content="Drop a single 1024×1024 PNG and generate every iOS, macOS and watchOS app icon size — plus a ready-to-drag Xcode AppIcon.appiconset — entirely in your browser. No upload, no server, no dependencies.">
+  <meta name="theme-color" content="#0b1020">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <link rel="canonical" href="https://bmmmm.github.io/app-icons-generator/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="App Icons Generator">
+  <meta property="og:description" content="Generate every iOS / macOS / watchOS app icon size from one 1024px PNG — client-side, no upload.">
+  <meta property="og:url" content="https://bmmmm.github.io/app-icons-generator/">
+  <meta property="og:image" content="https://bmmmm.github.io/app-icons-generator/icon.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <img class="logo" src="icon.png" width="96" height="96" alt="App Icons Generator logo">
+      <h1>App Icons Generator</h1>
+      <p class="subtitle">Drop one 1024×1024 PNG. Get every iOS, macOS &amp; watchOS icon size — plus a ready-to-drag Xcode <code>AppIcon.appiconset</code>. All in your browser.</p>
+      <div class="badges">
+        <span class="badge"><strong>32</strong> icon sizes</span>
+        <span class="badge">100% client-side</span>
+        <span class="badge">No upload</span>
+        <span class="badge">Zero dependencies</span>
+      </div>
+    </header>
+
+    <main>
+      <div id="drop" class="drop" tabindex="0" role="button" aria-label="Choose or drop a PNG image">
+        <div class="up-ico" aria-hidden="true">⬆</div>
+        <div class="big">Drop a PNG here or click to choose</div>
+        <div class="hint">Best results: a square image, 1024×1024 or larger. Processing happens locally — your image never leaves this page.</div>
+        <input id="file" type="file" accept="image/png,image/jpeg,image/webp" class="sr-only">
+      </div>
+
+      <p id="status" class="status" role="status" aria-live="polite">Waiting for an image…</p>
+
+      <div class="toolbar">
+        <button id="download" class="btn" disabled>⬇ Download .zip</button>
+        <button id="reset" class="btn secondary" disabled>Clear</button>
+      </div>
+
+      <div id="grid" class="grid" aria-live="polite"></div>
+
+      <section class="block" id="cli">
+        <h2>Prefer the command line?</h2>
+        <div class="card">
+          <p style="margin-top:0;color:var(--muted)">The original macOS shell script does the same thing with a single <code>sips</code> call per size. No dependencies beyond what ships with macOS.</p>
+<pre class="code"><span class="c"># clone &amp; run</span>
+git clone https://github.com/bmmmm/app-icons-generator.git
+cd app-icons-generator
+<span class="g">./ios-icon-generator.sh</span> example/app-icon-1024.png ./out
+
+<span class="c"># -&gt; ./out now holds Icon-16.png … Icon-1024.png (32 sizes)</span></pre>
+        </div>
+      </section>
+
+      <section class="block">
+        <h2>How the browser tool works</h2>
+        <div class="features">
+          <div class="feature"><h3>1 · Drop</h3><p>Pick a square PNG (1024px recommended). Everything runs locally via the Canvas API.</p></div>
+          <div class="feature"><h3>2 · Preview</h3><p>All 32 sizes are rendered with progressive high-quality downscaling and shown in a grid.</p></div>
+          <div class="feature"><h3>3 · Download</h3><p>Get a <code>.zip</code> with every size <em>and</em> a drag-ready <code>AppIcon.appiconset</code> for Xcode.</p></div>
+        </div>
+      </section>
+
+      <section class="block" id="xcode">
+        <h2>Drop straight into Xcode</h2>
+        <div class="card">
+          <ol class="steps">
+            <li>Unzip the download.</li>
+            <li>Drag the <code>AppIcon.appiconset</code> folder into your target's <code>Assets.xcassets</code>.</li>
+            <li>Set it as the app icon under <em>Target → General → App Icons and Launch Screen</em>.</li>
+          </ol>
+          <p style="margin-bottom:0;color:var(--muted)">The <code>all-icons/</code> folder additionally contains every raw size, matching the shell script's output exactly.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Built with the <a href="https://github.com/bmmmm/app-icons-generator">app-icons-generator</a> · Apache-2.0. Bundles the MIT-licensed <code>ios-icon-generator.sh</code> by smallmuou (see NOTICE).</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
